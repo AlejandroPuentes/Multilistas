@@ -105,32 +105,65 @@ public class Multilista {
     //agrega los estudiantes a la materia selecionada de la lista 
     
     // william 
-    public void AgregarEstudiante(String Materia, String NombreEstudiante) {
+    public boolean AgregarEstudiante(String Materia, String NombreEstudiante) {
 
         try {
             Materias Mate = buscarMateria(Materia);
             
             if (Mate != null) {
-                Estudiante estudiante = Mate.abajo;
                 
-                Estudiante estudianteNuevo = new Estudiante(NombreEstudiante);
+                if (revisarEstudiante(Mate,NombreEstudiante)==true){
+                   Estudiante estudianteNuevo = new Estudiante(NombreEstudiante);
 
                 if (Mate.abajo == null)//Lo utilizamos para el caso de que no tenga Estudiantes Resgistrados
                 {
-                    Mate.abajo=(estudianteNuevo);
+                    Mate.abajo=estudianteNuevo;
+                    return true;
                 } else //como hay estudiantes,lo debemos agregar al final
                 {
-                   
-                    while (estudiante.abajo != null) {
+                    Estudiante estudiante = Mate.abajo;
+                    if (NombreEstudiante.compareTo(Mate.abajo.Nombre_ES)<0){ //si la materia a insertar va antes de la cabeza 
+                        estudianteNuevo.abajo = estudiante;
+                        Mate.abajo=estudianteNuevo;
+                        return true;
+                    }
+                    while(estudiante.abajo!=null){//recorre la lista para agregar las materias 
+                        if(estudiante.abajo.Nombre_ES.compareTo(NombreEstudiante)>0){ // analiza si el siguiente va despues que la materia a ingresar
+                            estudianteNuevo.abajo=estudiante.abajo;
+                            estudiante.abajo=estudianteNuevo;
+                            return true;
+                        }
                         estudiante = estudiante.abajo;
                     }
-                    estudiante.abajo=(estudianteNuevo);
+                    estudiante.abajo=estudianteNuevo;// el ultimo caso cuando la materia se agrega al final
+                    return true;
+                } 
+                }else{
+                    JOptionPane.showMessageDialog(null, "El estudiante ya existe.");
+                    return false;
                 }
+                
+                
             } else {
                 JOptionPane.showMessageDialog(null, "No existe la materia a ingresar el estudiante.");
+                return false;
             }
         } catch (Exception e) {
+            return false;
         }
+    }
+    
+    boolean revisarEstudiante(Materias mat, String estudiante){
+        Estudiante q = mat.abajo;
+        boolean estado=true;
+        while (q!=null){
+            if (estudiante.equals(q.Nombre_ES)){
+                estado= false;
+                return estado;
+            }
+            q=q.abajo;
+        }
+        return estado;
     }
     //quita el estudiante pasado por parametro de la materia seleccionada
     // william

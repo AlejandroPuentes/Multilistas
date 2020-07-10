@@ -168,7 +168,25 @@ public class Multilista {
     //quita el estudiante pasado por parametro de la materia seleccionada
     // william
     void QuitarEstudiante(String materia,String estudiante){
-        
+        Estudiante estado = null;
+    try {
+
+            Materias Mate = buscarMateria(materia);
+            Estudiante q = Mate.abajo;
+            if (q != null) {
+                    while (q != null) {           
+                            if(q.Nombre_ES.equals(estudiante)){
+                                estado.abajo=q.abajo;                  
+                            }else{
+                                estado=q;
+                             }
+                            q=q.abajo;
+                    }       
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe la materia a ingresar el estudiante.");
+            }
+        }catch (Exception e) {
+        }
     }
     
     //muestra el contenido las materias con sus repectivos alumnos

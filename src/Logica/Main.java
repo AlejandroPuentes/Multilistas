@@ -14,10 +14,10 @@ public class Main {
        Multilista multilis = new Multilista();
         multilis.agregarMateria("Ciencias");
         multilis.agregarMateria("Aritmetica");        
-        //multilis.agregarMateria("Sociales");
-        //multilis.agregarMateria("Matematicas");
-        //multilis.agregarMateria("Español");
-        //multilis.agregarMateria("Español");
+        multilis.agregarMateria("Sociales");
+        multilis.agregarMateria("Matematicas");
+        multilis.agregarMateria("Español");
+        multilis.agregarMateria("Español");
         multilis.mostrar();
         System.out.println("*************************");
         //multilis.QuitarMateria("Matematicas");
@@ -27,12 +27,15 @@ public class Main {
         multilis.AgregarEstudiante("Aritmetica", "Carlos");
         multilis.AgregarEstudiante("Aritmetica", "Rolo");
         multilis.AgregarEstudiante("Aritmetica", "Rolo");
-        
         multilis.AgregarEstudiante("Ciencias", "Juan");
         multilis.AgregarEstudiante("Ciencias", "Rolo");
         multilis.AgregarEstudiante("Ciencias", "Carlos");
         multilis.AgregarEstudiante("Ciencias", "Alejandro");
         multilis.AgregarEstudiante("Ciencias", "william");
+        multilis.mostrarMultiLista();
+        
+        multilis.QuitarEstudiante("Ciencias", "william");
+        
         multilis.mostrarMultiLista();
         
        

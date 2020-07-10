@@ -21,27 +21,27 @@ public class Multilista {
     }
     
     public boolean agregarMateria(String nombreMa){
-        if (revisar(nombreMa)==true){
+        if (revisar(nombreMa)==true){// revisa si no existe la materia a agregar 
             Materias asigna = new Materias(nombreMa);
-            if(cab==null){
+            if(cab==null){// en caso de que no haya materias inscritas
                 cab=asigna;
                 return true;
             }else{
                 Materias aux= cab; 
-                if (nombreMa.compareTo(aux.Nombre)<0){
+                if (nombreMa.compareTo(aux.Nombre)<0){ //si la materia a insertar va antes de la cabeza 
                     asigna.sig = aux;
                     cab=asigna;
                     return true;
                 }
-                while(aux.sig!=null){
-                    if(aux.sig.Nombre.compareTo(nombreMa)>0){
+                while(aux.sig!=null){//recorre la lista para agregar las materias 
+                    if(aux.sig.Nombre.compareTo(nombreMa)>0){ // analiza si el siguiente va despues que la materia a ingresar
                         asigna.sig=aux.sig;
                         aux.sig=asigna;
                         return true;
                     }
                     aux = aux.sig;
                 }
-                aux.sig=asigna;
+                aux.sig=asigna;// el ultimo caso cuando la materia se agrega al final
                 return true;
             }
         }else{
@@ -51,7 +51,7 @@ public class Multilista {
     }
     
     
-    
+    //busca en las listas si la parametro (materia o estudiante) que se le paso ya estan en la listas
     boolean revisar(String mat){
         Materias q = cab;
         boolean estado=true;
@@ -85,6 +85,7 @@ public class Multilista {
             q=q.sig;
         }
     }
+    //busca la materia dentor de la lista de materias para agreagra un estudiante
     public Materias buscarMateria(String info) {
         Materias materia = cab;
         try {
@@ -99,6 +100,9 @@ public class Multilista {
         }
         return null;
     }
+    
+    
+    //agrega los estudiantes a la materia selecionada de la lista 
     
     // william 
     public void AgregarEstudiante(String Materia, String NombreEstudiante) {
@@ -116,7 +120,7 @@ public class Multilista {
                     Mate.abajo=(estudianteNuevo);
                 } else //como hay estudiantes,lo debemos agregar al final
                 {
-                    //nodoHijo = np.getAbajo();
+                   
                     while (estudiante.abajo != null) {
                         estudiante = estudiante.abajo;
                     }
@@ -128,11 +132,13 @@ public class Multilista {
         } catch (Exception e) {
         }
     }
+    //quita el estudiante pasado por parametro de la materia seleccionada
     // william
-    void QuitarEstudiante(String estu){
+    void QuitarEstudiante(String materia,String estudiante){
         
     }
     
+    //muestra el contenido las materias con sus repectivos alumnos
     public void mostrarMultiLista() {
 
         try {
@@ -142,7 +148,7 @@ public class Multilista {
 
                 Estudiante estu = Mat.abajo;
 
-                if (estu != null)//Lo utilizamos para el caso de que no tenga nodos hijos
+                if (estu != null)//Lo utilizamos para el caso de que no estudiantes inscritos
                 {
                     while (estu != null) {
                         System.out.println(" - " + estu.Nombre_ES);

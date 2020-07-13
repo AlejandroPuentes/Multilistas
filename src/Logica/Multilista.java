@@ -45,7 +45,7 @@ public class Multilista {
                 return true;
             }
         }else{
-            System.out.println("La materia ya existe");
+            JOptionPane.showMessageDialog(null, "LA MATERIA YA EXISTE");
             return false;
         }
     }
@@ -139,13 +139,13 @@ public class Multilista {
                     return true;
                 } 
                 }else{
-                    JOptionPane.showMessageDialog(null, "El estudiante ya existe.");
+                    JOptionPane.showMessageDialog(null, "EL ESTUDIANTE YA EXISTE");
                     return false;
                 }
                 
                 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe la materia a ingresar el estudiante.");
+                JOptionPane.showMessageDialog(null, "NO EXISTE LA MATERIA AL QUE DESEA INGRESAR AL CHAMACO");
                 return false;
             }
         } catch (Exception e) {
@@ -187,7 +187,7 @@ public class Multilista {
                     }       
                 }
             }else {
-                JOptionPane.showMessageDialog(null, "No existe la materia a ingresar el estudiante.");
+                JOptionPane.showMessageDialog(null, "NO EXISTE LA MATERIA DE LA QUE DEASA RETIRAR AL CHAMACO.");
                 }   
         }catch (Exception e) {
         }

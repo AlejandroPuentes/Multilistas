@@ -14,7 +14,8 @@ public class Main {
         //Interfaz In = new Interfaz();
         Pantallita panta = new Pantallita();
         panta.show();
-
+        String a = " ";
+        System.out.println(a.length());
     } 
     
    

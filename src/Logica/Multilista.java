@@ -169,50 +169,32 @@ public class Multilista {
     // william
     void QuitarEstudiante(String materia,String estudiante){
         Estudiante estado = null;
-    try {
-
+        try {
             Materias Mate = buscarMateria(materia);
-            Estudiante q = Mate.abajo;
-            if (q != null) {
+            if(Mate != null){
+                Estudiante q = Mate.abajo;
+                if (q != null) {
+                    if (Mate.abajo.Nombre_ES.equals(estudiante)){
+                        Mate.abajo=q.abajo;
+                    }
                     while (q != null) {           
-                            if(q.Nombre_ES.equals(estudiante)){
-                                estado.abajo=q.abajo;                  
-                            }else{
-                                estado=q;
-                             }
-                            q=q.abajo;
+                        if(q.Nombre_ES.equals(estudiante)){
+                            estado.abajo=q.abajo;                  
+                        }else{
+                            estado=q;
+                         }
+                        q=q.abajo;
                     }       
-            } else {
+                }
+            }else {
                 JOptionPane.showMessageDialog(null, "No existe la materia a ingresar el estudiante.");
-            }
+                }   
         }catch (Exception e) {
         }
     }
     
     //muestra el contenido las materias con sus repectivos alumnos
-    public void mostrarMultiLista() {
-
-        try {
-            Materias Mat = cab;
-            while (Mat != null) {
-                System.out.println(Mat.Nombre);
-
-                Estudiante estu = Mat.abajo;
-
-                if (estu != null)//Lo utilizamos para el caso de que no estudiantes inscritos
-                {
-                    while (estu != null) {
-                        System.out.println(" - " + estu.Nombre_ES);
-                        estu = estu.abajo;
-                    }
-                }
-                Mat = Mat.sig;
-            }
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e.toString());
-        }
-    }
+    
     
     public void mostrar (){
         Materias q =cab;

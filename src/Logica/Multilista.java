@@ -68,14 +68,25 @@ public class Multilista {
     public void QuitarMateria(String nombreMa){
         Materias q = cab;
         Materias estado = null;
+        
         int conta=0;
+        
         while (q!=null){
             if (cab.Nombre.equals(nombreMa)){
-                cab=cab.sig;
+                if(cab.abajo==null){
+                   cab=cab.sig;
+                }else{
+                     JOptionPane.showMessageDialog(null, "LA MATERIA NO SE PUEDE QUITAR");
+                }
                 
-            }else{              
+            }else{
+                
                 if(q.Nombre.equals(nombreMa)){
-                    estado.sig=q.sig;                  
+                    if (q.abajo==null){
+                        estado.sig=q.sig;
+                    }else{
+                        JOptionPane.showMessageDialog(null, "LA MATERIA NO SE PUEDE QUITAR");
+                    }                                      
 
                 }else{
                     estado=q;

@@ -188,7 +188,7 @@ public class Pantallita extends javax.swing.JFrame {
     private void btnInserMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInserMateriaActionPerformed
        int Longitud=14;
        if (NombreMateria.getText().length()<Longitud){ 
-            if(NombreMateria.equals("")){
+            if(NombreMateria.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "No SE DEBE DEJAR ESTAPCIO EN BLANCO");
             }else{
                 multi.agregarMateria(NombreMateria.getText());
@@ -203,7 +203,7 @@ public class Pantallita extends javax.swing.JFrame {
     private void btnInsertAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertAlumActionPerformed
         int Longitud=14;
        if (InAlumMateria.getText().length()<Longitud){ 
-            if(InAlumMateria.equals("")){
+            if(NombreAlumno.getText().isEmpty()){
                 JOptionPane.showMessageDialog(null, "No SE DEBE DEJAR ESTAPCIO EN BLANCO");
             }else{
                 multi.AgregarEstudiante(InAlumMateria.getText(), NombreAlumno.getText());
@@ -217,8 +217,8 @@ public class Pantallita extends javax.swing.JFrame {
     }//GEN-LAST:event_btnInsertAlumActionPerformed
 
     private void btnRemoveAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveAlumActionPerformed
-        multi.QuitarEstudiante(jLabel11.getText(), RetirAlumno.getText());
-        jLabel11.setText(null);
+        multi.QuitarEstudiante(RetirMatAlum.getText(), RetirAlumno.getText());
+        RetirMatAlum.setText(null);
         RetirAlumno.setText(null);
     }//GEN-LAST:event_btnRemoveAlumActionPerformed
 
